@@ -119,18 +119,16 @@ const Login = () => {
               {({ openIndexes, handleClick, AccordionContent }) => (
                 <>
                   <button
-                    className={`w-full cursor-default bg-gray-800 bg-opacity-70 py-2 text-center text-sm font-bold text-gray-400 transition-colors duration-200 focus:outline-none sm:rounded-t-lg ${
-                      openIndexes.includes(0) && 'text-indigo-500'
-                    } ${
-                      settings.currentSettings.localLogin &&
+                    className={`w-full cursor-default bg-gray-800 bg-opacity-70 py-2 text-center text-sm font-bold text-gray-400 transition-colors duration-200 focus:outline-none sm:rounded-t-lg ${openIndexes.includes(0) && 'text-indigo-500'
+                      } ${settings.currentSettings.localLogin &&
                       'hover:cursor-pointer hover:bg-gray-700'
-                    }`}
+                      }`}
                     onClick={() => handleClick(0)}
                     disabled={!settings.currentSettings.localLogin}
                   >
                     {intl.formatMessage(messages.signinwithplex)}
                   </button>
-                  <AccordionContent isOpen={openIndexes.includes(0)}>
+                  <AccordionContent isOpen={openIndexes.includes(1)}>
                     <div className="px-10 py-8">
                       <PlexLoginButton
                         isProcessing={isProcessing}
@@ -141,11 +139,10 @@ const Login = () => {
                   {settings.currentSettings.localLogin && (
                     <div>
                       <button
-                        className={`w-full cursor-default bg-gray-800 bg-opacity-70 py-2 text-center text-sm font-bold text-gray-400 transition-colors duration-200 hover:cursor-pointer hover:bg-gray-700 focus:outline-none ${
-                          openIndexes.includes(1)
+                        className={`w-full cursor-default bg-gray-800 bg-opacity-70 py-2 text-center text-sm font-bold text-gray-400 transition-colors duration-200 hover:cursor-pointer hover:bg-gray-700 focus:outline-none ${openIndexes.includes(1)
                             ? 'text-indigo-500'
                             : 'sm:rounded-b-lg'
-                        }`}
+                          }`}
                         onClick={() => handleClick(1)}
                       >
                         {intl.formatMessage(messages.signinwithoverseerr, {
@@ -153,7 +150,7 @@ const Login = () => {
                             settings.currentSettings.applicationTitle,
                         })}
                       </button>
-                      <AccordionContent isOpen={openIndexes.includes(1)}>
+                      <AccordionContent isOpen={openIndexes.includes(0)}>
                         <div className="px-10 py-8">
                           <LocalLogin revalidate={revalidate} />
                         </div>
